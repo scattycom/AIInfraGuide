@@ -1,0 +1,4 @@
+interface:
+  display_name: "AI Infra 学习教练"
+  short_description: "围绕16周推理工程计划安排每日练习、检查结果并持续记录学习进度"
+  default_prompt: "请使用 $ai-infra-coach 读取我的学习进度，按今天60分钟的时间安排任务，并从第一步指导我。"

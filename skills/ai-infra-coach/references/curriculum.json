@@ -1,0 +1,489 @@
+{
+  "version": "2026-09-05",
+  "weeks": [
+    {
+      "week": 1,
+      "title": "搭建环境与 Python 基础",
+      "goal": "在 Linux 环境中独立运行和调试 Python 程序。",
+      "tasks": [
+        {
+          "id": "W01-T01",
+          "description": "配置 WSL2 Ubuntu，确认 Linux 环境能识别 RTX 4070；记录系统、驱动和 Python 版本。"
+        },
+        {
+          "id": "W01-T02",
+          "description": "练习目录与权限、管道与重定向、进程管理、环境变量和虚拟环境。"
+        },
+        {
+          "id": "W01-T03",
+          "description": "学习 Python 函数、类、列表与字典、异常、模块导入、JSON 和 CSV 读写。"
+        },
+        {
+          "id": "W01-T04",
+          "description": "建立 llm-inference-lab Git 仓库，编写读取配置、处理数据并保存结果的命令行程序。"
+        }
+      ],
+      "deliverables": "环境说明、依赖清单、可运行的命令行程序。",
+      "acceptance": "在新终端中激活环境并运行程序；能够定位报错，解释虚拟环境的作用。",
+      "resources": "R1",
+      "planned_hours": 10
+    },
+    {
+      "week": 2,
+      "title": "PyTorch 张量与模型执行",
+      "goal": "看懂张量计算并完成一次 GPU 模型推理。",
+      "tasks": [
+        {
+          "id": "W02-T01",
+          "description": "练习 shape、dtype、device、广播、索引、矩阵乘法和维度变换。"
+        },
+        {
+          "id": "W02-T02",
+          "description": "理解 nn.Module、参数、前向计算、eval 和 inference_mode；学习自动微分的基本用途。"
+        },
+        {
+          "id": "W02-T03",
+          "description": "补齐矩阵乘法的维度规则、Softmax 和 FP32、FP16、BF16 的区别。"
+        },
+        {
+          "id": "W02-T04",
+          "description": "加载 Qwen3-1.7B 或同规模受支持模型完成生成，记录显存及实际输入输出长度。"
+        }
+      ],
+      "deliverables": "张量练习、小模型推理脚本、显存记录。",
+      "acceptance": "能根据张量形状解释计算，并修复维度、精度或设备不匹配问题。",
+      "resources": "R2 R8",
+      "planned_hours": 10
+    },
+    {
+      "week": 3,
+      "title": "Transformer 与 Attention",
+      "goal": "理解自回归模型中的注意力计算。",
+      "tasks": [
+        {
+          "id": "W03-T01",
+          "description": "学习 token、Embedding、Q/K/V、注意力分数、因果掩码和多头注意力。"
+        },
+        {
+          "id": "W03-T02",
+          "description": "了解位置编码、归一化和 MLP 在 Transformer 中的位置。"
+        },
+        {
+          "id": "W03-T03",
+          "description": "用 PyTorch 实现简化的因果 Attention，标注每一步的张量形状。"
+        },
+        {
+          "id": "W03-T04",
+          "description": "与 PyTorch SDPA 参考实现比较输出，检查数值误差与掩码行为。"
+        }
+      ],
+      "deliverables": "attention.py、正确性检查、张量形状说明。",
+      "acceptance": "能解释 Q/K/V 的来源、因果掩码的作用，以及序列长度对计算和存储的影响。",
+      "resources": "R3",
+      "planned_hours": 10
+    },
+    {
+      "week": 4,
+      "title": "KV Cache 与逐步生成",
+      "goal": "用实验理解 Prefill 和 Decode 的区别。",
+      "tasks": [
+        {
+          "id": "W04-T01",
+          "description": "给简化 Attention 模块增加逐 token 执行和 KV Cache。"
+        },
+        {
+          "id": "W04-T02",
+          "description": "比较重算完整前缀与复用缓存两条路径的输出，正确处理位置和掩码。"
+        },
+        {
+          "id": "W04-T03",
+          "description": "分别测量输入处理和逐步生成耗时，学习 GPU 异步执行、同步和正确计时。"
+        },
+        {
+          "id": "W04-T04",
+          "description": "改变序列长度，记录缓存占用与耗时；说明学习模块与完整模型的差别。"
+        }
+      ],
+      "deliverables": "两种执行路径、正确性结果、耗时与缓存占用表。",
+      "acceptance": "能解释缓存保存什么、减少什么计算，以及为什么生成越长缓存可能越大。",
+      "resources": "R3",
+      "planned_hours": 10
+    },
+    {
+      "week": 5,
+      "title": "vLLM 服务部署",
+      "goal": "建立可重复启动的单卡模型服务。",
+      "tasks": [
+        {
+          "id": "W05-T01",
+          "description": "按官方文档安装兼容的稳定版本，固定依赖并保存环境信息。"
+        },
+        {
+          "id": "W05-T02",
+          "description": "以小模型、短上下文和低并发启动；初始上下文上限可设为 2048。"
+        },
+        {
+          "id": "W05-T03",
+          "description": "编写普通和流式请求客户端，处理超时、错误返回与服务重启。"
+        },
+        {
+          "id": "W05-T04",
+          "description": "理解模型名、上下文上限、生成长度和精度配置，为桌面显示及运行时留出显存。"
+        }
+      ],
+      "deliverables": "启动脚本、客户端、依赖及模型版本记录。",
+      "acceptance": "服务重启后可调用；客户端能区分首个输出到达与完整请求结束。",
+      "resources": "R4 R8",
+      "planned_hours": 10
+    },
+    {
+      "week": 6,
+      "title": "标准化压力测试",
+      "goal": "获得可重复的在线性能数据。",
+      "tasks": [
+        {
+          "id": "W06-T01",
+          "description": "学习 TTFT、TPOT、ITL、请求吞吐、输出 token 吞吐和延迟分位数。"
+        },
+        {
+          "id": "W06-T02",
+          "description": "使用官方工具，逐步测试输入长度 128、512、1024 和输出长度 64、256。"
+        },
+        {
+          "id": "W06-T03",
+          "description": "从并发 1 开始，再测试 2、4、8；明确并发上限与请求到达速率的区别。"
+        },
+        {
+          "id": "W06-T04",
+          "description": "保存原始数据、实际生成长度、失败率、预热方式、缓存状态和完整配置。"
+        }
+      ],
+      "deliverables": "批量压测脚本、配置文件、CSV 或 JSON 结果。",
+      "acceptance": "能重复同一实验；先用少数组合确认流程，再扩展测试矩阵。",
+      "resources": "R5",
+      "planned_hours": 10
+    },
+    {
+      "week": 7,
+      "title": "性能基线与容量判断",
+      "goal": "用曲线解释不同负载下的服务表现。",
+      "tasks": [
+        {
+          "id": "W07-T01",
+          "description": "绘制并发与吞吐、并发与 TTFT、输入长度与 TTFT 曲线。"
+        },
+        {
+          "id": "W07-T02",
+          "description": "重复关键实验，记录样本数、持续时间和结果波动。"
+        },
+        {
+          "id": "W07-T03",
+          "description": "增加长短请求混合负载，观察排队和尾延迟。"
+        },
+        {
+          "id": "W07-T04",
+          "description": "设定实验用延迟与失败率目标，找出满足目标时的处理能力。"
+        }
+      ],
+      "deliverables": "baseline-report.md、图表、原始数据和复现命令。",
+      "acceptance": "能用数据解释在哪种负载下开始变慢；小样本 P99 不作过强结论。",
+      "resources": "R5",
+      "planned_hours": 10
+    },
+    {
+      "week": 8,
+      "title": "性能分析与瓶颈定位",
+      "goal": "从性能现象追踪到可验证的原因。",
+      "tasks": [
+        {
+          "id": "W08-T01",
+          "description": "学习 PyTorch Profiler，理解 CPU 时间、GPU kernel、数据拷贝与调用栈。"
+        },
+        {
+          "id": "W08-T02",
+          "description": "先分析简化 Attention，再按引擎支持的方式采集执行 trace。"
+        },
+        {
+          "id": "W08-T03",
+          "description": "比较短输入、长输入和不同批量下的执行特点。"
+        },
+        {
+          "id": "W08-T04",
+          "description": "提出一个瓶颈假设，设计能支持或否定它的实验；记录 WSL 或版本限制。"
+        }
+      ],
+      "deliverables": "trace、关键截图、一页瓶颈分析。",
+      "acceptance": "能区分观察结果与推测，并说明下一步如何验证。",
+      "resources": "R6",
+      "planned_hours": 10
+    },
+    {
+      "week": 9,
+      "title": "缓存与调度优化",
+      "goal": "理解吞吐、等待时间与缓存资源的取舍。",
+      "tasks": [
+        {
+          "id": "W09-T01",
+          "description": "构造共享前缀请求，对比前缀缓存开启和关闭。"
+        },
+        {
+          "id": "W09-T02",
+          "description": "分开测量冷缓存与预热后效果，记录前缀重复比例。"
+        },
+        {
+          "id": "W09-T03",
+          "description": "在当前版本支持的范围内，分别调整批处理配置和 Chunked Prefill。"
+        },
+        {
+          "id": "W09-T04",
+          "description": "记录吞吐、TTFT、尾延迟和显存，每次只改一个主要变量。"
+        }
+      ],
+      "deliverables": "配置对照表、曲线、适用条件说明。",
+      "acceptance": "能解释优化何时有效、何时收益有限，以及引入了什么代价。",
+      "resources": "R4 R5",
+      "planned_hours": 10
+    },
+    {
+      "week": 10,
+      "title": "量化性能与效果评估",
+      "goal": "在资源、速度和回答质量之间做有依据的比较。",
+      "tasks": [
+        {
+          "id": "W10-T01",
+          "description": "学习权重、激活和 KV Cache 量化的区别。"
+        },
+        {
+          "id": "W10-T02",
+          "description": "核对 GPU、引擎版本、模型与量化格式兼容性，选择一种受支持的方案。"
+        },
+        {
+          "id": "W10-T03",
+          "description": "比较同一基础模型的原精度与量化版本，记录显存、延迟和吞吐。"
+        },
+        {
+          "id": "W10-T04",
+          "description": "用 30 至 50 个固定问题做初步回归，记录来源、评分规则及逐题结果。"
+        }
+      ],
+      "deliverables": "量化报告、逐题评测结果、权重来源及兼容性说明。",
+      "acceptance": "能说明资源收益与实际加速是否一致；小问题集只用于初步效果检查。",
+      "resources": "R7",
+      "planned_hours": 10
+    },
+    {
+      "week": 11,
+      "title": "GPU 执行原理与 Triton",
+      "goal": "理解数据分块并写出第一个 GPU 算子。",
+      "tasks": [
+        {
+          "id": "W11-T01",
+          "description": "学习线程、warp、block、显存、共享内存与寄存器。"
+        },
+        {
+          "id": "W11-T02",
+          "description": "理解计算吞吐、显存带宽，以及计算受限与访存受限。"
+        },
+        {
+          "id": "W11-T03",
+          "description": "实现 Triton 向量加法，正确处理非整齐长度和边界。"
+        },
+        {
+          "id": "W11-T04",
+          "description": "使用预热和可靠计时测试不同输入规模，分析启动开销。"
+        }
+      ],
+      "deliverables": "Triton kernel、正确性检查和性能表。",
+      "acceptance": "能解释数据如何分块、为什么需要掩码，以及小任务的主要开销。",
+      "resources": "R9",
+      "planned_hours": 10
+    },
+    {
+      "week": 12,
+      "title": "融合算子与端到端收益",
+      "goal": "验证减少中间读写带来的实际效果。",
+      "tasks": [
+        {
+          "id": "W12-T01",
+          "description": "实现融合 Softmax，解释融合前后的数据读写。"
+        },
+        {
+          "id": "W12-T02",
+          "description": "验证不同形状、精度和极端输入下的数值正确性。"
+        },
+        {
+          "id": "W12-T03",
+          "description": "与 PyTorch 基线比较，记录优势和劣势区间。"
+        },
+        {
+          "id": "W12-T04",
+          "description": "接入简化模型模块，比较单算子加速与模块总耗时变化。"
+        }
+      ],
+      "deliverables": "算子实现、正确性结果、单算子及模块级性能报告。",
+      "acceptance": "能解释性能差异；即使未超过成熟实现，也能给出有证据的分析。",
+      "resources": "R9",
+      "planned_hours": 10
+    },
+    {
+      "week": 13,
+      "title": "引擎源码与有限改动",
+      "goal": "理解一条完整请求链并完成可审阅的修改。",
+      "tasks": [
+        {
+          "id": "W13-T01",
+          "description": "固定 vLLM 版本或 commit，跟踪请求进入、排队、缓存分配、执行、采样和返回。"
+        },
+        {
+          "id": "W13-T02",
+          "description": "找到调度器、KV Cache 管理和模型执行的主要代码入口。"
+        },
+        {
+          "id": "W13-T03",
+          "description": "根据已有测量选择边界清楚的问题，如重复处理、诊断缺失或可复现缺陷。"
+        },
+        {
+          "id": "W13-T04",
+          "description": "修改代码，检查相关行为并记录性能影响，整理 patch 与复现说明。"
+        }
+      ],
+      "deliverables": "调用流程图、源码笔记、一个 patch。",
+      "acceptance": "能说明改动位置、影响范围和验证方法；是否提交上游另行决定。",
+      "resources": "R4",
+      "planned_hours": 10
+    },
+    {
+      "week": 14,
+      "title": "搜索业务负载与效果评测",
+      "goal": "将推理实验连接到实际问答任务。",
+      "tasks": [
+        {
+          "id": "W14-T01",
+          "description": "收集可使用的技术文档，建立固定问题与参考材料。"
+        },
+        {
+          "id": "W14-T02",
+          "description": "制作约 50 道短材料、长材料和多文档问答；可先使用固定检索结果。"
+        },
+        {
+          "id": "W14-T03",
+          "description": "明确评分标准：是否回答问题、答案是否有依据、引用是否正确。"
+        },
+        {
+          "id": "W14-T04",
+          "description": "对比基线与优化配置，记录性能和质量，保留逐题证据。"
+        }
+      ],
+      "deliverables": "问题集、参考材料、评分规则、业务测试脚本。",
+      "acceptance": "能说明优化对实际问答效果的影响，并区分模型能力和系统性能问题。",
+      "resources": "R4 R5",
+      "planned_hours": 10
+    },
+    {
+      "week": 15,
+      "title": "多轮 Agent 与 Harness",
+      "goal": "测量多轮调用的任务级耗时。",
+      "tasks": [
+        {
+          "id": "W15-T01",
+          "description": "实现简单循环：接收问题、调用文档工具、整理结果并继续回答。"
+        },
+        {
+          "id": "W15-T02",
+          "description": "保存每轮输入、工具结果、输出长度、耗时及任务结果。"
+        },
+        {
+          "id": "W15-T03",
+          "description": "分析上下文增长、重复前缀与串行调用对总耗时的影响。"
+        },
+        {
+          "id": "W15-T04",
+          "description": "比较缓存或上下文组织策略，检查任务成功率是否变化。"
+        }
+      ],
+      "deliverables": "简单 harness、任务轨迹和任务级性能报告。",
+      "acceptance": "能区分推理、工具和编排耗时，解释单次调用提速与任务总收益的关系。",
+      "resources": "R10",
+      "planned_hours": 10
+    },
+    {
+      "week": 16,
+      "title": "项目交付与模拟答辩",
+      "goal": "形成可复现的工程作品和能力证据。",
+      "tasks": [
+        {
+          "id": "W16-T01",
+          "description": "统一启动、压测和分析脚本，整理配置及输出格式。"
+        },
+        {
+          "id": "W16-T02",
+          "description": "复现代表性的关键实验，保留原始数据与版本信息。"
+        },
+        {
+          "id": "W16-T03",
+          "description": "完成 README、架构说明、优化报告和已知限制。"
+        },
+        {
+          "id": "W16-T04",
+          "description": "准备 10 分钟讲解与简历描述，说明背景、瓶颈、改动、收益和代价。"
+        }
+      ],
+      "deliverables": "完整仓库、报告、关键 patch、复现说明和项目讲稿。",
+      "acceptance": "其他开发者能按说明复现实验；能回答收益在哪些条件下成立。",
+      "resources": "R1 至 R10",
+      "planned_hours": 10
+    }
+  ],
+  "resources": [
+    {
+      "id": "R1",
+      "title": "NVIDIA CUDA on WSL 指南",
+      "url": "https://docs.nvidia.com/cuda/wsl-user-guide/"
+    },
+    {
+      "id": "R2",
+      "title": "PyTorch 基础教程",
+      "url": "https://docs.pytorch.org/tutorials/beginner/basics/intro.html"
+    },
+    {
+      "id": "R3",
+      "title": "PyTorch Attention 教程",
+      "url": "https://docs.pytorch.org/tutorials/intermediate/scaled_dot_product_attention_tutorial.html"
+    },
+    {
+      "id": "R4",
+      "title": "vLLM 快速入门",
+      "url": "https://docs.vllm.ai/en/latest/getting_started/quickstart/"
+    },
+    {
+      "id": "R5",
+      "title": "vLLM CLI 与基准测试",
+      "url": "https://docs.vllm.ai/en/stable/cli/index.html"
+    },
+    {
+      "id": "R6",
+      "title": "PyTorch Profiler",
+      "url": "https://docs.pytorch.org/tutorials/recipes/recipes/profiler_recipe.html"
+    },
+    {
+      "id": "R7",
+      "title": "vLLM 量化支持",
+      "url": "https://docs.vllm.ai/en/stable/features/quantization/"
+    },
+    {
+      "id": "R8",
+      "title": "Qwen3 1.7B 模型说明",
+      "url": "https://huggingface.co/Qwen/Qwen3-1.7B"
+    },
+    {
+      "id": "R9",
+      "title": "Triton 官方教程",
+      "url": "https://triton-lang.org/main/getting-started/tutorials/index.html"
+    },
+    {
+      "id": "R10",
+      "title": "Anthropic Agent Harness 架构",
+      "url": "https://www.anthropic.com/engineering/managed-agents"
+    }
+  ]
+}

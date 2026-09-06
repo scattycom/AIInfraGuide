@@ -6,4 +6,12 @@ dist/
 .env.*
 *.log
 public/pagefind/
+
+# Local learning environments, backups and raw diagnostic captures
+/learning/**/.venv/
+/learning/**/__pycache__/
+/learning/**/*.py[cod]
+/learning/ai-infra/progress.previous.json
+/learning/ai-infra/*.tmp.json
+/learning/ai-infra/exercises/w01-wsl-diagnostics/logs-*/
 docs/guides/课程资料

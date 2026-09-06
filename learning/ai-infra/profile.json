@@ -1,0 +1,43 @@
+{
+    "background":  {
+                       "confirmed":  [
+                                         "具有 C++ 基础",
+                                         "现任 Qt 应用开发工程师"
+                                     ],
+                       "python":  "beginner_no_prior_use",
+                       "linux":  "beginner_no_prior_use",
+                       "deep_learning":  "unknown"
+                   },
+    "hardware":  {
+                     "gpu":  "NVIDIA GeForce RTX 4070",
+                     "memory_mib":  12282,
+                     "verified_date":  "2026-09-07",
+                     "os":  "Windows",
+                     "wsl_installed":  true,
+                     "wsl_distributions":  [
+                                               "Ubuntu"
+                                           ],
+                     "windows_driver_version":  "595.79",
+                     "ubuntu_wsl_version":  2,
+                     "wsl_package_version":  "2.4.13.0",
+                     "wsl_kernel_version":  "5.15.167.4-1",
+                     "ubuntu_version":  "26.04.1 LTS",
+                     "linux_gpu_verified":  true,
+                     "cgroup_version":  2
+                 },
+    "plan":  {
+                 "weeks":  16,
+                 "planned_hours_per_week":  10,
+                 "default_session_minutes":  60,
+                 "budget_note":  "学习安排默认值，可按当天可用时间调整"
+             },
+    "language":  "zh-CN",
+    "timezone":  "Asia/Shanghai",
+    "goal":  "积累大模型推理部署、测量、分析、引擎与算子优化的可复现实践证据",
+    "working_directory":  "learning/ai-infra",
+    "reference_document":  "learning/ai-infra/documents/AI_Infra_16周学习计划与实践记录.docx",
+    "windows_python_version":  "3.10.8",
+    "project_directory":  ".",
+    "linux_python_version":  "3.14.4",
+    "path_base":  "repository_root"
+}

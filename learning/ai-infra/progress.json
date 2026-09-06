@@ -1,0 +1,969 @@
+{
+    "schema_version":  1,
+    "timezone":  "Asia/Shanghai",
+    "course_status":  "in_progress",
+    "start_date":  "2026-09-07",
+    "current_week":  1,
+    "last_session_id":  "2026-09-07-01",
+    "total_actual_minutes":  0,
+    "next_step":  "W01-T03 CSV写文件：先在当前仓库 learning/ai-infra/exercises/w01-linux-basics/ 恢复Python虚拟环境；换电脑先检查本机环境并重新创建.venv。配置tokens=128/request=4。学习者在token_calc.py顶部加import csv，末尾用with open(\"results.csv\",\"w\",newline=\"\",encoding=\"utf-8\") as f:和csv.writer写表头tokens,request,total，再独立写一行配置tokens、request及total_tokens的乘积。运行脚本并cat results.csv，预期表头和128,4,512；通过后练CSV读取。当前尚无results.csv，本次会话已关闭，下次创建新会话，仍为第1周。",
+    "weeks":  [
+                  {
+                      "week":  1,
+                      "tasks":  [
+                                    {
+                                        "id":  "W01-T01",
+                                        "status":  "verified",
+                                        "evidence":  [
+                                                         {
+                                                             "kind":  "output",
+                                                             "location":  "sessions/2026-09-07-01.md",
+                                                             "summary":  "学习者提供命令输出，助手已核对：无 WSL 发行版；Windows RTX 4070，驱动595.79，显存12282MiB；Python3.10.8。Linux环境待安装与验证。",
+                                                             "checked_at":  "2026-09-07"
+                                                         },
+                                                         {
+                                                             "kind":  "output",
+                                                             "location":  "sessions/2026-09-07-01.md",
+                                                             "summary":  "学习者执行 wsl --install -d Ubuntu-24.04 返回无效的分发名称，安装尚未完成；待查询在线发行版列表。",
+                                                             "checked_at":  "2026-09-07"
+                                                         },
+                                                         {
+                                                             "kind":  "output",
+                                                             "location":  "sessions/2026-09-07-01.md",
+                                                             "summary":  "已检查学习者提供的在线发行版列表：存在 Ubuntu，不含 Ubuntu-24.04；安装名称确定为 Ubuntu，尚未安装成功。",
+                                                             "checked_at":  "2026-09-07"
+                                                         },
+                                                         {
+                                                             "kind":  "output",
+                                                             "location":  "sessions/2026-09-07-01.md",
+                                                             "summary":  "学习者提供 Installation successful! 输出，Linux 用户 scatty 创建成功；WSL 版本及 Linux GPU/Python 待验证。未保存密码。",
+                                                             "checked_at":  "2026-09-07"
+                                                         },
+                                                         {
+                                                             "kind":  "output",
+                                                             "location":  "sessions/2026-09-07-01.md",
+                                                             "summary":  "学习者提供 wsl --list --verbose：Ubuntu Running VERSION 1；已确认 WSL1，待转换 WSL2。",
+                                                             "checked_at":  "2026-09-07"
+                                                         },
+                                                         {
+                                                             "kind":  "output",
+                                                             "location":  "sessions/2026-09-07-01.md",
+                                                             "summary":  "学习者提供 wsl --list --verbose：Ubuntu Stopped VERSION 2；已核对 WSL2，Linux 版本、Python 及 GPU 待检查。",
+                                                             "checked_at":  "2026-09-07"
+                                                         },
+                                                         {
+                                                             "kind":  "output",
+                                                             "location":  "sessions/2026-09-07-01.md",
+                                                             "summary":  "用户启动 WSL2 Ubuntu 报对象类型不支持操作；助手只读检查发现 Windows build19045、WSL内核5.10.102.1、Sangfor Winsock模块。尚未确定因果，待更新WSL后重试。",
+                                                             "checked_at":  "2026-09-07"
+                                                         },
+                                                         {
+                                                             "kind":  "output",
+                                                             "location":  "sessions/2026-09-07-01.md",
+                                                             "summary":  "用户反馈更新80%停5–15分钟。助手读取安装日志确认00:19:17 MSI安装状态0，并成功查询WSL2.4.13.0/内核5.15.167.4-1；原更新命令仍在，Ubuntu启动尚待复验。",
+                                                             "checked_at":  "2026-09-07T00:32:21+08:00"
+                                                         },
+                                                         {
+                                                             "kind":  "output",
+                                                             "location":  "sessions/2026-09-07-01.md",
+                                                             "summary":  "用户提供更新后启动错误 Wsl/Service/E_UNEXPECTED。助手查得WslService/vmcompute/hns运行、两项功能启用；更新后尚未重启Windows，有待重命名文件标志但关联性未知。待整机重启后复验。",
+                                                             "checked_at":  "2026-09-07"
+                                                         },
+                                                         {
+                                                             "kind":  "output",
+                                                             "location":  "sessions/2026-09-07-01.md",
+                                                             "summary":  "助手复测：Windows已于2026-09-07 00:38:20重启；Ubuntu仍为WSL2，启动及shutdown后复试均报E_UNEXPECTED。HypervisorPresent=True，WslService/vmcompute/hns运行，ext4.vhdx存在。Sangfor Winsock模块仍在，未证实因果。管理员日志访问被拒。已准备诊断脚本并通过语法/XML检查，尚未执行管理员采集。",
+                                                             "checked_at":  "2026-09-07T00:44:17.7156758+08:00"
+                                                         },
+                                                         {
+                                                             "kind":  "output",
+                                                             "location":  "exercises/w01-wsl-diagnostics/diagnosis-summary.md",
+                                                             "summary":  "学习者在管理员窗口运行诊断脚本；助手解析ETL确认systemd259.5因cgroup v1不受支持退出PID1，随后WslCorePort关闭并报E_UNEXPECTED。WSL内置系统可运行。",
+                                                             "checked_at":  "2026-09-07T00:47:56.0013542+08:00"
+                                                         },
+                                                         {
+                                                             "kind":  "output",
+                                                             "location":  "exercises/w01-wsl-diagnostics/environment-verified.txt",
+                                                             "summary":  "助手新建用户.wslconfig启用统一cgroup v2并重启WSL后恢复。实测Ubuntu26.04.1 LTS，Python3.14.4，cgroup2fs，PID1为systemd，系统running、失败服务0，RTX4070/驱动595.79/12282MiB。环境技术检查通过，学习者独立进入和基础命令反馈仍待完成，不等同于学习者已掌握。",
+                                                             "checked_at":  "2026-09-07T00:47:56.0048609+08:00"
+                                                         },
+                                                         {
+                                                             "kind":  "output",
+                                                             "location":  "sessions/2026-09-07-01.md",
+                                                             "summary":  "学习者提供独立操作输出：wsl -d Ubuntu进入成功，cd ~后pwd=/home/scatty，whoami=scatty；python未找到，改用python3 --version返回3.14.4。结合助手此前Linux GPU与系统版本检查，W01-T01环境配置验收通过；不代表已掌握Linux/Python。",
+                                                             "checked_at":  "2026-09-07T00:49:39.1524011+08:00"
+                                                         }
+                                                     ]
+                                    },
+                                    {
+                                        "id":  "W01-T02",
+                                        "status":  "verified",
+                                        "evidence":  [
+                                                         {
+                                                             "kind":  "output",
+                                                             "location":  "sessions/2026-09-07-01.md",
+                                                             "summary":  "学习者已执行cd ~、pwd、whoami，验证主目录/home/scatty与用户scatty。目录基础已开始；创建文件、相对路径、权限、管道重定向、进程、环境变量和虚拟环境尚待练习。",
+                                                             "checked_at":  "2026-09-07T00:49:39.1559083+08:00"
+                                                         },
+                                                         {
+                                                             "kind":  "output",
+                                                             "location":  "sessions/2026-09-07-01.md",
+                                                             "summary":  "学习者完成mkdir -p、cd、重复touch notes.text、ls -l、cd ..、pwd；助手通过WSL ls -la核对练习目录中notes.text存在且0字节。cd ..返回exercises。目录实践已核对，cd ..与cd ~的口头区别尚未回答；权限等其余子项仍未验收。",
+                                                             "checked_at":  "2026-09-07T00:53:10.6193280+08:00"
+                                                         },
+                                                         {
+                                                             "kind":  "output",
+                                                             "location":  "sessions/2026-09-07-01.md",
+                                                             "summary":  "学习者实际对比覆盖与追加：\u003e后cat仅hello python，\u003e\u003e后cat为hello python/hello linux两行，cat notes.text | wc -l返回2；助手通过WSL核对文件内容和行数。重定向与管道最小实践通过，权限/进程/环境变量/虚拟环境仍未完成。",
+                                                             "checked_at":  "2026-09-07T00:56:01.1269516+08:00"
+                                                         },
+                                                         {
+                                                             "kind":  "output",
+                                                             "location":  "sessions/2026-09-07-01.md",
+                                                             "summary":  "学习者执行ls -l /etc/passwd，输出-rw-r--r-- 1 root root 1380 Sep 7 00:11 /etc/passwd；查看权限操作已核对。尚未回答scatty是否可读/可写，权限含义理解仍待验收。",
+                                                             "checked_at":  "2026-09-07T00:57:19.7685307+08:00"
+                                                         },
+                                                         {
+                                                             "kind":  "explanation",
+                                                             "location":  "sessions/2026-09-07-01.md",
+                                                             "summary":  "学习者正确判断当前scatty不能修改/etc/passwd。助手确认普通用户适用r--无w，并补充有r所以可读；尚不认定chmod、目录权限等已掌握。",
+                                                             "checked_at":  "2026-09-07T00:58:42.7113859+08:00"
+                                                         },
+                                                         {
+                                                             "kind":  "output",
+                                                             "location":  "sessions/2026-09-07-01.md",
+                                                             "summary":  "学习者最初只执行test未查看退出码；经提示后分别紧跟echo $?，test -r /etc/passwd返回0，test -w返回1。权限检查与查看退出码最小实践通过；尚未验证独立解释退出码覆盖、chmod或目录权限。",
+                                                             "checked_at":  "2026-09-07T01:01:11.9518845+08:00"
+                                                         },
+                                                         {
+                                                             "kind":  "output",
+                                                             "location":  "sessions/2026-09-07-01.md",
+                                                             "summary":  "学习者后台启动sleep 300，PID818，保存learning_pid；自行把ps格式com修正为comm，查看到818 sleep；把kill \"learning_pid\"修正为kill \"$learning_pid\"，收到Terminated，最后ps只剩表头。后台启动/查看/按PID终止最小实践通过，并有自行修正命令证据。",
+                                                             "checked_at":  "2026-09-07T01:03:49.9487624+08:00"
+                                                         },
+                                                         {
+                                                             "kind":  "output",
+                                                             "location":  "sessions/2026-09-07-01.md",
+                                                             "summary":  "环境变量实验暂未通过：学习者赋值learing_topic=linux（少n），读取和export却使用learning_topic，父shell与两次子shell输出均空。已定位变量名不一致；因learning_topic已被标记export，重做需先unset再正确赋值，避免直接补赋值导致前后都继承。",
+                                                             "checked_at":  "2026-09-07T01:06:20.3240069+08:00"
+                                                         },
+                                                         {
+                                                             "kind":  "output",
+                                                             "location":  "sessions/2026-09-07-01.md",
+                                                             "summary":  "学习者unset后正确赋值learning_topic=linux，父Bash输出linux；子Bash导出前child:空，export后child:linux。普通变量与导出给子进程的环境变量最小实践通过。",
+                                                             "checked_at":  "2026-09-07T01:08:37.6101459+08:00"
+                                                         },
+                                                         {
+                                                             "kind":  "output",
+                                                             "location":  "sessions/2026-09-07-01.md",
+                                                             "summary":  "助手检查虚拟环境前置：python3 -m venv --help可用，但ensurepip缺失；python3-venv和python3.14-venv未安装且本地APT无候选版本。源配置含resolute及universe。尚未安装或创建环境，待刷新APT索引后再核对安装。",
+                                                             "checked_at":  "2026-09-07T01:08:37.6136582+08:00"
+                                                         },
+                                                         {
+                                                             "kind":  "output",
+                                                             "location":  "sessions/2026-09-07-01.md",
+                                                             "summary":  "学习者提供APT安装成功输出；助手只读核对python3-venv=3.14.3-0ubuntu2、python3.14-venv=3.14.4-1ubuntu0.1，python3 -m ensurepip --version返回pip25.1.1。venv前置组件安装通过，练习目录尚无.venv，创建激活仍待学习者完成。",
+                                                             "checked_at":  "2026-09-07T01:10:18.3512480+08:00"
+                                                         },
+                                                         {
+                                                             "kind":  "output",
+                                                             "location":  "sessions/2026-09-07-01.md",
+                                                             "summary":  "学习者激活.venv后command -v python指向练习目录.venv/bin/python，Python3.14.4，pip25.1.1来自同一.venv/lib/python3.14/site-packages。助手核对pyvenv.cfg的include-system-site-packages=false及sys.prefix!=sys.base_prefix为True，环境存在且隔离配置有效。退出/重新激活和用途解释待验收。",
+                                                             "checked_at":  "2026-09-07T01:13:18.6954251+08:00"
+                                                         },
+                                                         {
+                                                             "kind":  "output",
+                                                             "location":  "sessions/2026-09-07-01.md",
+                                                             "summary":  "学习者deactivate后command -v python3=/usr/bin/python3，重新source .venv/bin/activate后指向练习目录.venv/bin/python3。退出/重新激活和解释器切换实践通过；尚未回答隔离依赖用途题，不将操作通过等同概念掌握。",
+                                                             "checked_at":  "2026-09-07T01:14:30.9592289+08:00"
+                                                         },
+                                                         {
+                                                             "kind":  "explanation",
+                                                             "location":  "sessions/2026-09-07-01.md",
+                                                             "summary":  "学习者正确回答A环境升级不会改变B环境的包，理解依赖隔离；其“解释器和版本独立”表述由助手澄清：venv基于创建时指定的Python，不自动安装不同版本，当前.venv/bin/python3实际链接/usr/bin/python3。已完成目录/文件权限查看判断、管道重定向、后台进程、环境变量、venv创建激活切换与用途解释，按课程所列范围基础验收通过；不代表高级权限或解释器版本管理已掌握。",
+                                                             "checked_at":  "2026-09-07T01:16:48.4746509+08:00"
+                                                         }
+                                                     ]
+                                    },
+                                    {
+                                        "id":  "W01-T03",
+                                        "status":  "in_progress",
+                                        "evidence":  [
+                                                         {
+                                                             "kind":  "output",
+                                                             "location":  "sessions/2026-09-07-01.md",
+                                                             "summary":  "学习者在.venv中进入Python3.14.4交互模式，tokens=128、request=4、print(tokens * request)输出512，然后exit()返回Bash。变量request命名与使用一致，正确。请求数改为8的独立变式尚未提交，函数/类/集合等尚未练习。",
+                                                             "checked_at":  "2026-09-07T01:18:35.6608413+08:00"
+                                                         },
+                                                         {
+                                                             "kind":  "output",
+                                                             "location":  "sessions/2026-09-07-01.md",
+                                                             "summary":  "学习者重新进入Python，独立设置request=8、tokens=128，print(request*tokens)输出1024，再exit()返回已激活.venv的Bash。变量赋值及乘法独立变式通过；函数等尚未开始。",
+                                                             "checked_at":  "2026-09-07T01:19:53.1660325+08:00"
+                                                         },
+                                                         {
+                                                             "kind":  "output",
+                                                             "location":  "sessions/2026-09-07-01.md",
+                                                             "summary":  "学习者在REPL首次def缺冒号报SyntaxError expected冒号，自行补冒号后用4空格缩进return token*request。独立调用total_tokens(158,4)和(158,10)得到632、1580。函数定义、返回值和调用最小实践通过，修正语法错误有实际证据。",
+                                                             "checked_at":  "2026-09-07T01:23:55.2034185+08:00"
+                                                         },
+                                                         {
+                                                             "kind":  "code",
+                                                             "location":  "exercises/w01-linux-basics/token_calc.py",
+                                                             "summary":  "助手将学习者已实现的函数及两次调用原样保存为可重复运行的Python文件，仅规范空格。算法由学习者在REPL完成；文件保存由助手完成。尚待学习者从Bash执行脚本，不把保存文件记为用户已执行。",
+                                                             "checked_at":  "2026-09-07T01:23:55.2074663+08:00"
+                                                         },
+                                                         {
+                                                             "kind":  "output",
+                                                             "location":  "sessions/2026-09-07-01.md",
+                                                             "summary":  "学习者在已激活.venv的Bash执行python token_calc.py，输出632与1580并返回终端，脚本运行实践通过。当前源码仍为函数及两次print调用；列表/循环待学习者修改。",
+                                                             "checked_at":  "2026-09-07T01:25:16.0637319+08:00"
+                                                         },
+                                                         {
+                                                             "kind":  "code",
+                                                             "location":  "exercises/w01-linux-basics/token_calc.py",
+                                                             "summary":  "学习者已保存request_counts=[4,8,10]和for循环骨架，循环体仍为pass；运行后无输出。助手读回源码确认一致，解释pass是空操作、函数定义不自动调用；列表循环输出子项尚未完成，给予替换为print(total_tokens(158,count))的最小修复。",
+                                                             "checked_at":  "2026-09-07T01:30:49.6742840+08:00"
+                                                         },
+                                                         {
+                                                             "kind":  "code",
+                                                             "location":  "exercises/w01-linux-basics/token_calc.py",
+                                                             "summary":  "学习者按最小修复将pass替换成print(total_tokens(158,count))；助手读回源码确认for遍历[4,8,10]并调用函数。学习者运行输出632、1264、1580，列表遍历最小实践通过（循环体是在助手提供完整修复后完成，尚不扩大为独立批量建模掌握）。",
+                                                             "checked_at":  "2026-09-07T01:32:27.7072312+08:00"
+                                                         },
+                                                         {
+                                                             "kind":  "code",
+                                                             "location":  "exercises/w01-linux-basics/token_calc.py",
+                                                             "summary":  "学习者独立添加config={\"tokens\":256,\"request\":4}及print(total_tokens(config[\"tokens\"],config[\"request\"]))；助手读回源码核对一致，学习者运行原三行之外新增1024。字典创建、按键取值及作为函数实参的最小独立实践通过；键名request与读取一致，无需改成requests。",
+                                                             "checked_at":  "2026-09-07T01:37:01.2995085+08:00"
+                                                         },
+                                                         {
+                                                             "kind":  "output",
+                                                             "location":  "sessions/2026-09-07-01.md",
+                                                             "summary":  "学习者在REPL定义config={\"tokens\":256,\"request\":4}，访问config[\"time\"]触发KeyError: time。缺失键异常复现实验通过；助手解释time是缺失键，尚未实操捕获异常。",
+                                                             "checked_at":  "2026-09-07T01:38:52.6113641+08:00"
+                                                         },
+                                                         {
+                                                             "kind":  "output",
+                                                             "location":  "sessions/2026-09-07-01.md",
+                                                             "summary":  "学习者尝试try/except，写成except keyerror；读取缺失time先产生KeyError，在求值未定义的keyerror名称时又产生NameError。异常捕获暂未通过；助手定位大小写问题，提示改为内置异常类KeyError后重新输入完整块。",
+                                                             "checked_at":  "2026-09-07T01:42:29.7950462+08:00"
+                                                         },
+                                                         {
+                                                             "kind":  "output",
+                                                             "location":  "sessions/2026-09-07-01.md",
+                                                             "summary":  "学习者将异常类名改为KeyError，重新输入try读取config[\"time\"]并except输出缺少time配置，实际得到自定义提示。指定类型异常捕获最小实践通过（在大小写提示后完成）；正常分支及控制流解释待验证。",
+                                                             "checked_at":  "2026-09-07T01:44:06.8057712+08:00"
+                                                         },
+                                                         {
+                                                             "kind":  "output",
+                                                             "location":  "sessions/2026-09-07-01.md",
+                                                             "summary":  "学习者将try中的键改为已有tokens，except KeyError分支输出文本为缺少配置；实际仅输出256，正常路径未进入except。异常/正常两条路径最小实测通过；用户未附口头判断，助手解释分支行为。",
+                                                             "checked_at":  "2026-09-07T01:45:42.5095813+08:00"
+                                                         },
+                                                         {
+                                                             "kind":  "output",
+                                                             "location":  "sessions/2026-09-07-01.md",
+                                                             "summary":  "学习者import json，json.dumps(config)保存为config_text，输出JSON文本且type为str；调用json.loads(config_text)，REPL显示还原字典tokens=256/request=4。序列化与解析结果正确，但尚未赋值restored或通过该变量按键读取。",
+                                                             "checked_at":  "2026-09-07T01:50:21.4982728+08:00"
+                                                         },
+                                                         {
+                                                             "kind":  "output",
+                                                             "location":  "sessions/2026-09-07-01.md",
+                                                             "summary":  "学习者restored=json.loads(config_text)保存解析结果；首次print缺右括号出现SyntaxError，随后自行修正，输出restored[\"tokens\"]=256、type(restored)=dict。JSON字符串往返及返回值保存/读取实践通过。",
+                                                             "checked_at":  "2026-09-07T01:53:05.5658540+08:00"
+                                                         },
+                                                         {
+                                                             "kind":  "output",
+                                                             "location":  "exercises/w01-linux-basics/config.json",
+                                                             "summary":  "学习者在REPL用with open及json.dump写config.json，再json.load赋给loaded，两块均正常返回。助手以该.venv的python -m json.tool核对实际文件JSON有效，内容tokens=256/request=4。尚未收到学习者打印loaded及按键读取的输出，下一步补查读回值。",
+                                                             "checked_at":  "2026-09-07T01:55:41.2540466+08:00"
+                                                         },
+                                                         {
+                                                             "kind":  "output",
+                                                             "location":  "sessions/2026-09-07-01.md",
+                                                             "summary":  "学习者打印从config.json读回的loaded，输出字典tokens=256/request=4，再按tokens键读取输出256。结合此前实际JSON文件核对，JSON写文件/读文件/按键使用的最小实践通过。",
+                                                             "checked_at":  "2026-09-07T01:57:04.6895237+08:00"
+                                                         },
+                                                         {
+                                                             "kind":  "code",
+                                                             "location":  "exercises/w01-linux-basics/token_calc.py",
+                                                             "summary":  "学习者独立添加import json，注释硬编码config，以with open读取json.load到loaded，再config=loaded并调用函数。助手读回源码确认有效；实际config.json仍tokens=256/request=4，所以末行1024正确。读取配置接入已完成，改配置影响结果的变式待完成。",
+                                                             "checked_at":  "2026-09-07T02:01:02.4925740+08:00"
+                                                         },
+                                                         {
+                                                             "kind":  "experiment",
+                                                             "location":  "exercises/w01-linux-basics/config.json",
+                                                             "summary":  "学习者将config.json的tokens由256改为128、request保持4，运行末行从1024变512，前三行不变；助手核对实际配置128/4和脚本文件读取实现。修改配置影响计算结果的独立变式通过。",
+                                                             "checked_at":  "2026-09-07T02:02:16.6485512+08:00"
+                                                         }
+                                                     ]
+                                    },
+                                    {
+                                        "id":  "W01-T04",
+                                        "status":  "pending",
+                                        "evidence":  [
+
+                                                     ]
+                                    }
+                                ],
+                      "acceptance":  {
+                                         "status":  "pending",
+                                         "evidence":  [
+
+                                                      ]
+                                     }
+                  },
+                  {
+                      "week":  2,
+                      "tasks":  [
+                                    {
+                                        "id":  "W02-T01",
+                                        "status":  "pending",
+                                        "evidence":  [
+
+                                                     ]
+                                    },
+                                    {
+                                        "id":  "W02-T02",
+                                        "status":  "pending",
+                                        "evidence":  [
+
+                                                     ]
+                                    },
+                                    {
+                                        "id":  "W02-T03",
+                                        "status":  "pending",
+                                        "evidence":  [
+
+                                                     ]
+                                    },
+                                    {
+                                        "id":  "W02-T04",
+                                        "status":  "pending",
+                                        "evidence":  [
+
+                                                     ]
+                                    }
+                                ],
+                      "acceptance":  {
+                                         "status":  "pending",
+                                         "evidence":  [
+
+                                                      ]
+                                     }
+                  },
+                  {
+                      "week":  3,
+                      "tasks":  [
+                                    {
+                                        "id":  "W03-T01",
+                                        "status":  "pending",
+                                        "evidence":  [
+
+                                                     ]
+                                    },
+                                    {
+                                        "id":  "W03-T02",
+                                        "status":  "pending",
+                                        "evidence":  [
+
+                                                     ]
+                                    },
+                                    {
+                                        "id":  "W03-T03",
+                                        "status":  "pending",
+                                        "evidence":  [
+
+                                                     ]
+                                    },
+                                    {
+                                        "id":  "W03-T04",
+                                        "status":  "pending",
+                                        "evidence":  [
+
+                                                     ]
+                                    }
+                                ],
+                      "acceptance":  {
+                                         "status":  "pending",
+                                         "evidence":  [
+
+                                                      ]
+                                     }
+                  },
+                  {
+                      "week":  4,
+                      "tasks":  [
+                                    {
+                                        "id":  "W04-T01",
+                                        "status":  "pending",
+                                        "evidence":  [
+
+                                                     ]
+                                    },
+                                    {
+                                        "id":  "W04-T02",
+                                        "status":  "pending",
+                                        "evidence":  [
+
+                                                     ]
+                                    },
+                                    {
+                                        "id":  "W04-T03",
+                                        "status":  "pending",
+                                        "evidence":  [
+
+                                                     ]
+                                    },
+                                    {
+                                        "id":  "W04-T04",
+                                        "status":  "pending",
+                                        "evidence":  [
+
+                                                     ]
+                                    }
+                                ],
+                      "acceptance":  {
+                                         "status":  "pending",
+                                         "evidence":  [
+
+                                                      ]
+                                     }
+                  },
+                  {
+                      "week":  5,
+                      "tasks":  [
+                                    {
+                                        "id":  "W05-T01",
+                                        "status":  "pending",
+                                        "evidence":  [
+
+                                                     ]
+                                    },
+                                    {
+                                        "id":  "W05-T02",
+                                        "status":  "pending",
+                                        "evidence":  [
+
+                                                     ]
+                                    },
+                                    {
+                                        "id":  "W05-T03",
+                                        "status":  "pending",
+                                        "evidence":  [
+
+                                                     ]
+                                    },
+                                    {
+                                        "id":  "W05-T04",
+                                        "status":  "pending",
+                                        "evidence":  [
+
+                                                     ]
+                                    }
+                                ],
+                      "acceptance":  {
+                                         "status":  "pending",
+                                         "evidence":  [
+
+                                                      ]
+                                     }
+                  },
+                  {
+                      "week":  6,
+                      "tasks":  [
+                                    {
+                                        "id":  "W06-T01",
+                                        "status":  "pending",
+                                        "evidence":  [
+
+                                                     ]
+                                    },
+                                    {
+                                        "id":  "W06-T02",
+                                        "status":  "pending",
+                                        "evidence":  [
+
+                                                     ]
+                                    },
+                                    {
+                                        "id":  "W06-T03",
+                                        "status":  "pending",
+                                        "evidence":  [
+
+                                                     ]
+                                    },
+                                    {
+                                        "id":  "W06-T04",
+                                        "status":  "pending",
+                                        "evidence":  [
+
+                                                     ]
+                                    }
+                                ],
+                      "acceptance":  {
+                                         "status":  "pending",
+                                         "evidence":  [
+
+                                                      ]
+                                     }
+                  },
+                  {
+                      "week":  7,
+                      "tasks":  [
+                                    {
+                                        "id":  "W07-T01",
+                                        "status":  "pending",
+                                        "evidence":  [
+
+                                                     ]
+                                    },
+                                    {
+                                        "id":  "W07-T02",
+                                        "status":  "pending",
+                                        "evidence":  [
+
+                                                     ]
+                                    },
+                                    {
+                                        "id":  "W07-T03",
+                                        "status":  "pending",
+                                        "evidence":  [
+
+                                                     ]
+                                    },
+                                    {
+                                        "id":  "W07-T04",
+                                        "status":  "pending",
+                                        "evidence":  [
+
+                                                     ]
+                                    }
+                                ],
+                      "acceptance":  {
+                                         "status":  "pending",
+                                         "evidence":  [
+
+                                                      ]
+                                     }
+                  },
+                  {
+                      "week":  8,
+                      "tasks":  [
+                                    {
+                                        "id":  "W08-T01",
+                                        "status":  "pending",
+                                        "evidence":  [
+
+                                                     ]
+                                    },
+                                    {
+                                        "id":  "W08-T02",
+                                        "status":  "pending",
+                                        "evidence":  [
+
+                                                     ]
+                                    },
+                                    {
+                                        "id":  "W08-T03",
+                                        "status":  "pending",
+                                        "evidence":  [
+
+                                                     ]
+                                    },
+                                    {
+                                        "id":  "W08-T04",
+                                        "status":  "pending",
+                                        "evidence":  [
+
+                                                     ]
+                                    }
+                                ],
+                      "acceptance":  {
+                                         "status":  "pending",
+                                         "evidence":  [
+
+                                                      ]
+                                     }
+                  },
+                  {
+                      "week":  9,
+                      "tasks":  [
+                                    {
+                                        "id":  "W09-T01",
+                                        "status":  "pending",
+                                        "evidence":  [
+
+                                                     ]
+                                    },
+                                    {
+                                        "id":  "W09-T02",
+                                        "status":  "pending",
+                                        "evidence":  [
+
+                                                     ]
+                                    },
+                                    {
+                                        "id":  "W09-T03",
+                                        "status":  "pending",
+                                        "evidence":  [
+
+                                                     ]
+                                    },
+                                    {
+                                        "id":  "W09-T04",
+                                        "status":  "pending",
+                                        "evidence":  [
+
+                                                     ]
+                                    }
+                                ],
+                      "acceptance":  {
+                                         "status":  "pending",
+                                         "evidence":  [
+
+                                                      ]
+                                     }
+                  },
+                  {
+                      "week":  10,
+                      "tasks":  [
+                                    {
+                                        "id":  "W10-T01",
+                                        "status":  "pending",
+                                        "evidence":  [
+
+                                                     ]
+                                    },
+                                    {
+                                        "id":  "W10-T02",
+                                        "status":  "pending",
+                                        "evidence":  [
+
+                                                     ]
+                                    },
+                                    {
+                                        "id":  "W10-T03",
+                                        "status":  "pending",
+                                        "evidence":  [
+
+                                                     ]
+                                    },
+                                    {
+                                        "id":  "W10-T04",
+                                        "status":  "pending",
+                                        "evidence":  [
+
+                                                     ]
+                                    }
+                                ],
+                      "acceptance":  {
+                                         "status":  "pending",
+                                         "evidence":  [
+
+                                                      ]
+                                     }
+                  },
+                  {
+                      "week":  11,
+                      "tasks":  [
+                                    {
+                                        "id":  "W11-T01",
+                                        "status":  "pending",
+                                        "evidence":  [
+
+                                                     ]
+                                    },
+                                    {
+                                        "id":  "W11-T02",
+                                        "status":  "pending",
+                                        "evidence":  [
+
+                                                     ]
+                                    },
+                                    {
+                                        "id":  "W11-T03",
+                                        "status":  "pending",
+                                        "evidence":  [
+
+                                                     ]
+                                    },
+                                    {
+                                        "id":  "W11-T04",
+                                        "status":  "pending",
+                                        "evidence":  [
+
+                                                     ]
+                                    }
+                                ],
+                      "acceptance":  {
+                                         "status":  "pending",
+                                         "evidence":  [
+
+                                                      ]
+                                     }
+                  },
+                  {
+                      "week":  12,
+                      "tasks":  [
+                                    {
+                                        "id":  "W12-T01",
+                                        "status":  "pending",
+                                        "evidence":  [
+
+                                                     ]
+                                    },
+                                    {
+                                        "id":  "W12-T02",
+                                        "status":  "pending",
+                                        "evidence":  [
+
+                                                     ]
+                                    },
+                                    {
+                                        "id":  "W12-T03",
+                                        "status":  "pending",
+                                        "evidence":  [
+
+                                                     ]
+                                    },
+                                    {
+                                        "id":  "W12-T04",
+                                        "status":  "pending",
+                                        "evidence":  [
+
+                                                     ]
+                                    }
+                                ],
+                      "acceptance":  {
+                                         "status":  "pending",
+                                         "evidence":  [
+
+                                                      ]
+                                     }
+                  },
+                  {
+                      "week":  13,
+                      "tasks":  [
+                                    {
+                                        "id":  "W13-T01",
+                                        "status":  "pending",
+                                        "evidence":  [
+
+                                                     ]
+                                    },
+                                    {
+                                        "id":  "W13-T02",
+                                        "status":  "pending",
+                                        "evidence":  [
+
+                                                     ]
+                                    },
+                                    {
+                                        "id":  "W13-T03",
+                                        "status":  "pending",
+                                        "evidence":  [
+
+                                                     ]
+                                    },
+                                    {
+                                        "id":  "W13-T04",
+                                        "status":  "pending",
+                                        "evidence":  [
+
+                                                     ]
+                                    }
+                                ],
+                      "acceptance":  {
+                                         "status":  "pending",
+                                         "evidence":  [
+
+                                                      ]
+                                     }
+                  },
+                  {
+                      "week":  14,
+                      "tasks":  [
+                                    {
+                                        "id":  "W14-T01",
+                                        "status":  "pending",
+                                        "evidence":  [
+
+                                                     ]
+                                    },
+                                    {
+                                        "id":  "W14-T02",
+                                        "status":  "pending",
+                                        "evidence":  [
+
+                                                     ]
+                                    },
+                                    {
+                                        "id":  "W14-T03",
+                                        "status":  "pending",
+                                        "evidence":  [
+
+                                                     ]
+                                    },
+                                    {
+                                        "id":  "W14-T04",
+                                        "status":  "pending",
+                                        "evidence":  [
+
+                                                     ]
+                                    }
+                                ],
+                      "acceptance":  {
+                                         "status":  "pending",
+                                         "evidence":  [
+
+                                                      ]
+                                     }
+                  },
+                  {
+                      "week":  15,
+                      "tasks":  [
+                                    {
+                                        "id":  "W15-T01",
+                                        "status":  "pending",
+                                        "evidence":  [
+
+                                                     ]
+                                    },
+                                    {
+                                        "id":  "W15-T02",
+                                        "status":  "pending",
+                                        "evidence":  [
+
+                                                     ]
+                                    },
+                                    {
+                                        "id":  "W15-T03",
+                                        "status":  "pending",
+                                        "evidence":  [
+
+                                                     ]
+                                    },
+                                    {
+                                        "id":  "W15-T04",
+                                        "status":  "pending",
+                                        "evidence":  [
+
+                                                     ]
+                                    }
+                                ],
+                      "acceptance":  {
+                                         "status":  "pending",
+                                         "evidence":  [
+
+                                                      ]
+                                     }
+                  },
+                  {
+                      "week":  16,
+                      "tasks":  [
+                                    {
+                                        "id":  "W16-T01",
+                                        "status":  "pending",
+                                        "evidence":  [
+
+                                                     ]
+                                    },
+                                    {
+                                        "id":  "W16-T02",
+                                        "status":  "pending",
+                                        "evidence":  [
+
+                                                     ]
+                                    },
+                                    {
+                                        "id":  "W16-T03",
+                                        "status":  "pending",
+                                        "evidence":  [
+
+                                                     ]
+                                    },
+                                    {
+                                        "id":  "W16-T04",
+                                        "status":  "pending",
+                                        "evidence":  [
+
+                                                     ]
+                                    }
+                                ],
+                      "acceptance":  {
+                                         "status":  "pending",
+                                         "evidence":  [
+
+                                                      ]
+                                     }
+                  }
+              ],
+    "sessions":  [
+                     {
+                         "session_id":  "2026-09-07-01",
+                         "date":  "2026-09-07",
+                         "week":  1,
+                         "task_ids":  [
+                                          "W01-T01",
+                                          "W01-T02",
+                                          "W01-T03"
+                                      ],
+                         "planned_minutes":  60,
+                         "actual_minutes":  null,
+                         "status":  "closed",
+                         "location":  "sessions/2026-09-07-01.md",
+                         "closed_date":  "2026-09-07"
+                     }
+                 ],
+    "knowledge_gaps":  [
+                           {
+                               "topic":  "Python 与 Linux 基础",
+                               "status":  "open",
+                               "source":  "2026-09-07 用户自述二者均未使用过",
+                               "next_action":  "Linux基础及Python函数、列表、字典、异常、JSON已有实践证据；继续CSV读写、类与模块，不重复从终端安装开始。"
+                           },
+                           {
+                               "topic":  "venv基础解释器与依赖隔离的边界",
+                               "status":  "open",
+                               "source":  "2026-09-07 学习者正确理解包隔离，但将解释器和Python版本也概括为独立；助手已澄清当前为基础解释器符号链接",
+                               "next_action":  "后续版本选择或复习时确认：venv由哪个Python创建，以及它是否会自动下载另一个版本。"
+                           },
+                           {
+                               "topic":  "chmod与目录rwx权限、WSL Windows挂载盘权限差异",
+                               "status":  "open",
+                               "source":  "2026-09-07 已完成文件权限查看和读写判断；此前助手提出的chmod/目录权限扩展尚未实操",
+                               "next_action":  "作为Linux补充练习保留，安排时先处理DrvFS和原生Linux文件系统语义区别，不据此声称已掌握。"
+                           },
+                           {
+                               "topic":  "Python顶层执行、main约定与模块导入",
+                               "status":  "open",
+                               "source":  "2026-09-07 学习者以C++ main入口为参照，询问Python无main为何直接执行print",
+                               "next_action":  "对照现有脚本讲执行顺序与__name__，后续用直接运行和导入对比验证；目前只讲解，不标记已掌握。"
+                           }
+                       ],
+    "review_queue":  [
+                         {
+                             "topic":  "venv与基础解释器的关系",
+                             "review_date":  "2026-09-08",
+                             "status":  "pending",
+                             "prompt":  "venv会自动下载不同Python版本吗？由哪个解释器创建？"
+                         },
+                         {
+                             "topic":  "Python顶层执行与模块导入",
+                             "review_date":  "2026-09-08",
+                             "status":  "pending",
+                             "prompt":  "直接运行脚本与import有什么区别？后续实践__name__入口保护。"
+                         }
+                     ],
+    "adjustments":  [
+                        {
+                            "date":  "2026-09-07",
+                            "type":  "workspace_migration",
+                            "from":  "E:/vnpy/learning/ai-infra",
+                            "to":  "E:/newUE5Source/AIInfraGuide/learning/ai-infra",
+                            "reason":  "用户指定 AIInfraGuide 为新的学习工程；保留课程、任务状态、证据和活动会话。旧目录保留为迁移前归档。"
+                        }
+                    ]
+}
